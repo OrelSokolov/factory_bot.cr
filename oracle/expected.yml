@@ -1,0 +1,56 @@
+build_basic	id=nil name="John" email="john@example.com" admin=false age=42 new_record=true persisted=false created_at=nil
+build_override	name="Ada" age=7 email="ada@example.com"
+create_basic	id=SET name="John" email="john@example.com" admin=false age=42 new_record=false persisted=true created_at=SET
+create_trait	name="John" admin=true age=30
+create_traits_two	admin=true age=70
+create_trait_override	admin=true name="Grace" email="grace@example.com"
+create_block	age=77 name="John"
+build_list	name=Listy admin=true persisted=false | name=Listy admin=true persisted=false
+create_list	count=3 persisted=true ages=42,42,42
+create_list_block_index	ages=0,10
+create_pair	count=2 names=Acme,Acme persisted=true
+attributes_for	admin=false age=42 email="john@example.com" name="John"
+attributes_for_trait_override	admin=true age=30 email="x@example.com" name="X"
+attributes_for_assoc_excluded	body="Body" published=false title="Post"
+attributes_for_list	count=2 first_name="Acme"
+build_stubbed	id=1001 persisted=true new_record=false destroyed=false created_at=SET name="John"
+build_stubbed_list	id=1002 id=1003
+build_stubbed_assoc	post_id=1005 user_id=1004 fk_is_stub_id=true published=false
+build_stubbed_custom_callback	age=99 name="Tagged"
+stub_next_id_setter	id=5001
+sequence_global	person1@example.com person2@example.com
+sequence_rewind	person1@example.com
+sequence_initial_value	100 101
+sequence_array	a b c
+generate_list	a,b
+inline_sequence_and_modify	logins="login1","login2" name="ModSub"
+implicit_trait_attr	admin=true name=nil age=30
+implicit_sequence_attr	email="person3@example.com" name="S2"
+assoc_create	title="Post" persisted=true user_id_set=true fk_matches=true user_persisted=true user_name="John"
+assoc_build_parent_strategy	persisted=false user_id=nil user_name="John" user_persisted=false
+assoc_override_object	user_name="Existing" fk_matches=true
+assoc_override_fk_alias	user_id=555 user_nil=true
+assoc_strategy_build	persisted=false user_id=nil user_new_record=true user_name="John"
+assoc_with_trait	published=true title="Post"
+aliases_and_class	class=Post title="R" persisted=true
+nested_child_factory	name="John" age=25 email="john@example.com"
+use_parent_strategy_off	post_persisted=false user_created=true fk_assigned=true
+callbacks_order	before_build,after_build:Tagged,before_create,after_create:Tagged:
+callback_after_stub_fires	log= age=99
+transient_in_record_not_assigned	name="John" responds_to_dates=false
+initialize_with	name="Ctor" age=nil email=nil
+to_create_custom	persisted=false new_record=true id=nil
+skip_create	persisted=false new_record=true
+initialize_with_build	name="Ctor" persisted=false
+enum_trait_started	status="started" persisted=true
+enum_trait_finished	status="finished"
+global_callback	email="global@example.com" name="John"
+lint_ok	ok
+lint_invalid	The following factories are invalid:\n\n* broken - boom (RuntimeError)
+error_unknown_factory	KeyError: Factory not registered: "nope"
+error_duplicate_factory	FactoryBot::DuplicateDefinitionError: Factory already registered: user
+error_attribute_redefined	FactoryBot::AttributeDefinitionError: Attribute already defined: name
+error_unknown_trait	KeyError: Trait not registered: "unknown_trait"
+error_self_referencing_association	FactoryBot::AssociationDefinitionError: Self-referencing association 'selfref' in 'selfref'
+error_self_referencing_trait	FactoryBot::TraitDefinitionError: Self-referencing trait 'looping'
+syntax_methods_mixin	name="John" age=42

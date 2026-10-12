@@ -1,0 +1,102 @@
+# Спецификация таблиц для compile-time кодогенерации active_record_cr
+# (модели шарда читают db/schema.yml из корня запуска).
+users:
+  columns:
+  - name: id
+    type: int8
+    nullable: 'NO'
+    default: nextval('users_id_seq'::regclass)
+  - name: login
+    type: varchar
+    nullable: 'YES'
+    default:
+  - name: name
+    type: varchar
+    nullable: 'YES'
+    default:
+  - name: email
+    type: varchar
+    nullable: 'YES'
+    default:
+  - name: admin
+    type: bool
+    nullable: 'YES'
+    default:
+  - name: age
+    type: int8
+    nullable: 'YES'
+    default:
+  - name: created_at
+    type: timestamp
+    nullable: 'YES'
+    default:
+  - name: updated_at
+    type: timestamp
+    nullable: 'YES'
+    default:
+posts:
+  columns:
+  - name: id
+    type: int8
+    nullable: 'NO'
+    default: nextval('posts_id_seq'::regclass)
+  - name: title
+    type: varchar
+    nullable: 'YES'
+    default:
+  - name: body
+    type: text
+    nullable: 'YES'
+    default:
+  - name: user_id
+    type: int8
+    nullable: 'YES'
+    default:
+  - name: published
+    type: bool
+    nullable: 'YES'
+    default:
+  - name: created_at
+    type: timestamp
+    nullable: 'YES'
+    default:
+  - name: updated_at
+    type: timestamp
+    nullable: 'YES'
+    default:
+accounts:
+  columns:
+  - name: id
+    type: int8
+    nullable: 'NO'
+    default: nextval('accounts_id_seq'::regclass)
+  - name: name
+    type: varchar
+    nullable: 'YES'
+    default:
+  - name: created_at
+    type: timestamp
+    nullable: 'YES'
+    default:
+  - name: updated_at
+    type: timestamp
+    nullable: 'YES'
+    default:
+tasks:
+  columns:
+  - name: id
+    type: int8
+    nullable: 'NO'
+    default: nextval('tasks_id_seq'::regclass)
+  - name: status
+    type: varchar
+    nullable: 'YES'
+    default:
+  - name: created_at
+    type: timestamp
+    nullable: 'YES'
+    default:
+  - name: updated_at
+    type: timestamp
+    nullable: 'YES'
+    default:
